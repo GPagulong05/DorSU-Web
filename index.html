@@ -1,16 +1,441 @@
 <!DOCTYPE html>
-<html :class="{ 'theme-dark': dark }" x-data="data()" lang="en" class="">
-    <head>
-        <script src="https://cdn.tailwindcss.com"></script>
-        <title>DorSU Website</title>
-    </head>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DorSu Website</title>
 
-    <body>
+    <!-- font awesome cdn link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+    <!-- custom css file link  -->
+    <!--  <link rel="stylesheet" href="css/style.css"> -->
+
+    <style type="text/css">
+        :root{
+            --orange:#e67e22;
+            --black:#333;
+            --light-color:#777;
+            --border:.1rem solid rgba(0,0,0,.2);
+            --box-shadow:0 .5rem 1rem rgba(0,0,0,.1);
+        }
+
+        *{
+            margin:0; padding:0;
+            box-sizing: border-box;
+            outline: none; border:none;
+            text-decoration: none;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-weight: lighter;
+        }
+
+        html{
+            font-size: 62.5%;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+            scroll-padding-top: 6rem;
+        }
+
+        section{
+            padding:2rem 7%;
+        }
+
+        .header .navbar a:hover{
+            color:var(--orange);
+        }
+        .header .icons i:hover{
+            color:#fff;
+            background:var(--orange);
+        }
+
+        .header .search-form{
+            display: none;
+        }
+
+        .header .search-form.active{
+            display: flex;
+        }
+
+        .header .search-form label:hover{
+            color:var(--orange);
+        }
+
+        #menu-bars{
+            display: none;
+        }
+
+        .header .aboutdiv{
+            display: none;
+        }
+
+        .header .aboutdiv.active{
+            display: inline-block;
+        }
+        .aboutdiv a:hover{
+            color: #e67e22;
+        }
+
+        .btn{
+            margin-top: 1rem;
+            display: inline-block;
+            background:#003399;
+            color:#fff;
+            border-radius: .5rem;
+            padding:.9rem 3rem;
+            cursor: pointer;
+            font-size: 1.7rem;
+        }
+
+        .btn:hover{
+            background:#ffcc00;
+        }
+
+        .about ul li{
+            cursor: pointer;
+        }
+
+        .about ul li:hover{
+            color: #ffcc00;
+        }
+
+
+.footer .follow a:hover{
+    background:var(--orange);
+}
+
+
+
+
+/*-----------------------------------------------------para responsive ang website need ni na code kaning naka kulong ---------------------------------------*/
+
+                    @media (max-width:991px){
+
+                        html{
+                            font-size: 55%;
+                        }
+
+                        .header{
+                            padding:1.5rem;
+                        }
+
+                        section{
+                            padding:2rem;
+                        }    
+
+                        .container{
+                            grid-template-columns: 2fr 1fr;
+                        }
+
+                    }
+
+                    @media (max-width:768px){
+
+                        #menu-bars{
+                            display: inline-block;
+                        }
+
+                        .header .search-form{
+                            top:100%; left: 0; right: 0;
+                            border-top: var(--border);
+                            width: 100%;
+                            border-radius: 0;
+                        }
+
+                        .header .navbar{
+                            position: absolute;
+                            top:100%; left: 0; right: 0;
+                            border-top: var(--border);
+                            border-bottom: var(--border);
+                            background: #fff;        
+                            display: none;
+                        }
+
+                        .header .navbar.active{
+                            display: block;
+                        }
+
+                        .header .navbar a{
+                            display: block;
+                            background:#f7f7f7;
+                            padding:1.5rem;
+                            margin:1.5rem;
+                            border-radius: .5rem;
+                            border:var(--border);
+                        }
+
+                        .container{
+                            grid-template-columns: 1fr;
+                            gap:0;
+                        }
+
+                        .container .posts-container .post .image{
+                            height: 30rem;;
+                        }
+
+                        .footer{
+                            flex-flow: column;
+                            text-align: center;
+                        }
+
+                    }
+
+                    @media (max-width:450px){
+
+                        html{
+                            font-size: 50%;
+                        }
+
+                        .contact form .inputBox input{
+                            width:100%;
+                        }    
+
+                    }
+
+/*-----------------------------------------------------para responsive ang website need ni na code kaning naka kulong ---------------------------------------*/
+
+
+
+    </style>
+
+</head>
+<body>
+
+<!-- header section starts  -->
+
+<header class="header" style="position: fixed;top:0; left:0; right:0;z-index: 1000;background: #ffcc00;box-shadow: var(--box-shadow);display: flex;align-items: center;padding:1.2rem 7%;">
+
+    <a href="#" class="logo" style="color:var(--black);font-size: 2.5rem;margin-right: auto;"><span style="color:#2596be;"><img src="images/logo.png" width="70px;" height="70px;"></a>
+
+    <nav class="navbar" style="color:white;;margin-right: 2rem;font-size: 1.7rem;text-transform: capitalize;">
+        <a style="margin-right: 1em;cursor: pointer;" id="homelink">Home</a>
+        <a style="margin-right: 1em; cursor: pointer;" id="aboutlink">About</a>
+        <a style="margin-right: 1em;cursor: pointer;">Academics</a>
+        <a style="margin-right: 1em;cursor: pointer;">Research</a>
+        <a style="margin-right: 1em;cursor: pointer;">Student</a>
+        <a style="margin-right: 1em;cursor: pointer;">Resource</a>
+        <a style="margin-right: 1em;cursor: pointer;">Admissions</a>
+        <a style="margin-right: 1em;cursor: pointer;">Grade Inquiry</a>
+    </nav>
+
+    <div class="icons">
+        <i class="fas fa-bars" id="menu-bars" style="height:4.5rem;line-height:4.5rem;width:4.5rem;text-align: center;color:var(--black);background:#eee;border-radius: 50%;margin-left: .7rem;font-size: 1.7rem;cursor: pointer;"></i>
+        <i class="fas fa-search" style="height:4.5rem;line-height:4.5rem;width:4.5rem;text-align: center;color:var(--black);background:#ffcc00;border-radius: 50%;margin-left: .7rem;font-size: 1.7rem;cursor: pointer;" id="search-icon"></i>
+    </div>
+
+    <form action="" class="search-form" style="position: absolute;background:#fff;border-radius: .5rem;align-items: center;box-shadow: var(--box-shadow);top:110%; right:7%;height:6rem;width:50rem;padding:1rem;">
+        <input type="search" name="" placeholder="search here..." id="search-box" style=" width:100%;border:var(--border);border-radius: .5rem;padding:1rem;font-size: 1.7rem;color:var(--black);height: 100%;">
+        <label for="search-box" class="fas fa-search" style="font-size: 2rem;padding-left: 1rem;padding-right: .5rem;cursor: pointer;color:var(--black);"></label>
+    </form>
+
+    <div class="aboutdiv" style="position: absolute; background:#fff; border-radius: .5rem;align-items: center;box-shadow: var(--box-shadow);
+            top:80%; right:60%; height:auto;width:auto;padding:1.5rem; opacity: .8;">
+
+            <hr>
+            <ul style="list-style-type: none;">
+                <li><a style="font-size:1.5em; padding-bottom: : 50px; cursor: pointer;"></i> History</a></li>
+                <li><a style="font-size:1.5em; padding-bottom: : 50px; cursor: pointer;">Mision and Vision</a></li>
+                <li><a style="font-size:1.5em; padding-bottom: : 50px; cursor: pointer;">Goals and Values</a></li>
+                <li><a style="font-size:1.5em; padding-bottom: : 50px; cursor: pointer;">Administration</a></li>
+                <li><a style="font-size:1.5em; padding-bottom: : 0px; cursor: pointer;">Board of Regent</a></li>
+            </ul>
+            
         
-        <h1 class="font-serif text-2xl">Welcome to DorSU</h1>
-        <div class="max-w-none bg-no-repeat">
-        <img src="background.jpg" max-w-none>
+    </div>
+
+</header>
+
+<!-- header section ends -->
+
+<!-- banner section starts  -->
+
+<section class="banner" id="banner" style="min-height: 80vh;background:url(images/banner1.png) no-repeat;background-size: cover;background-position: center;display: grid;place-items: center;padding-top: 8rem;">
+
+    <div class="content" style="opacity: .8; text-align: center;background:#fff;border-radius: .5rem;box-shadow: var(--box-shadow);padding:3rem;max-width: 50rem;">
+        <h3 style="font-size: 4rem;color:var(--black);text-transform: uppercase;">DAVAO ORIENTAL STATE UNIVERSITY</h3>
+        <p style=" font-size: 1.7rem;color:var(--light-color);padding:1rem 0;line-height: 1.5;">NEWS AND EVENTS</p>
+    </div>
+
+</section>
+
+<!-- banner section ends -->
+
+<!-- posts section starts  -->
+
+<section class="container" id="posts" style="display: grid;grid-template-columns: 2.5fr 1fr;gap:1.5rem;background:#eee;">
+
+    <div class="posts-container">
+
+        <div class="post" style="width:100%;padding:2rem;background:#fff;border:var(--border);border-radius: .5rem;margin-bottom: 1.5rem;">
+            <img src="images/blog-1.jpg" alt="" class="image" style="height: 40rem;width:100%;border-radius: .5rem;object-fit: cover;">
+            <div class="date" style="padding-top: 2rem;font-size: 1.5rem;color:var(--light-color);">
+                <i class="far fa-clock"></i>
+                <span>SEPTEMBER 18, 2022</span>
+            </div>
+            <h3 class="title" style="padding-top: 1.5rem;font-size: 2.5rem;color:var(--black);">DOrSU employees trained to respond to emergencies</h3>
+            <p class="text" style=" color:var(--light-color);font-size: 1.6rem;line-height: 1.7;padding:1rem 0;">Selected staff and faculty of Davao Oriental State University(DOrSU) received training from the City Disaster Risk Reduction and Management Office (CDRRMO), City of Mati, to prepare them for emergencies that might arise at work,...</p>
+            <div class="links" style="border-top: var(--border);margin-top: .5rem;padding-top: 1.5rem;display: flex;align-items: center;">
+                <a href="#" class="user" style="margin-right: auto;font-size: 1.5rem;color:var(--light-color);">
+                    <i class="far fa-user"></i>
+                    <span>By: Gerald M. Pagulong</span>
+                </a>
+                <a href="#" class="icon btn" style="padding-right: 1rem;font-size: 1.5rem;color:var(--light-color);">
+                    <span style="color: white;">View More </span>
+                    <i class="fas fa-long-arrow-alt-right" style="color: white; padding-right: .2rem;"></i>
+                </a>
+            </div>
         </div>
-        
-    </body>
+
+        <div class="post" style="width:100%;padding:2rem;background:#fff;border:var(--border);border-radius: .5rem;margin-bottom: 1.5rem;">
+            <img src="images/blog-1.jpg" alt="" class="image" style="height: 40rem;width:100%;border-radius: .5rem;object-fit: cover;">
+            <div class="date" style="padding-top: 2rem;font-size: 1.5rem;color:var(--light-color);">
+                <i class="far fa-clock"></i>
+                <span>SEPTEMBER 14, 2022</span>
+            </div>
+            <h3 class="title" style="padding-top: 1.5rem;font-size: 2.5rem;color:var(--black);">US Pediatricians, DOrSU work toward reducing maternal, newborn mortality</h3>
+            <p class="text" style=" color:var(--light-color);font-size: 1.6rem;line-height: 1.7;padding:1rem 0;">Pediatricians from Johns Hopkins University and the Institute of Nursing and Allied Health Sciences (INAHS) conducted a two-day training from September 13 to 14, 2022, at the university library for midwives, nurses, and nursing...</p>
+            <div class="links" style="border-top: var(--border);margin-top: .5rem;padding-top: 1.5rem;display: flex;align-items: center;">
+                <a href="#" class="user" style="margin-right: auto;font-size: 1.5rem;color:var(--light-color);">
+                    <i class="far fa-user"></i>
+                    <span>By: Gerald M. Pagulong</span>
+                </a>
+                <a href="#" class="icon btn" style="padding-right: 1rem;font-size: 1.5rem;color:var(--light-color);">
+                    <span style="color: white;">View More </span>
+                    <i class="fas fa-long-arrow-alt-right" style="color: white; padding-right: .2rem;"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="post" style="width:100%;padding:2rem;background:#fff;border:var(--border);border-radius: .5rem;margin-bottom: 1.5rem;">
+            <img src="images/blog-1.jpg" alt="" class="image" style="height: 40rem;width:100%;border-radius: .5rem;object-fit: cover;">
+            <div class="date" style="padding-top: 2rem;font-size: 1.5rem;color:var(--light-color);">
+                <i class="far fa-clock"></i>
+                <span>AUGUST 20, 2022</span>
+            </div>
+            <h3 class="title" style="padding-top: 1.5rem;font-size: 2.5rem;color:var(--black);">DOrSU, CCATI sign MOA for Tech-voc Training, Nat’l Certification Activities</h3>
+            <p class="text" style=" color:var(--light-color);font-size: 1.6rem;line-height: 1.7;padding:1rem 0;">DOrSU President Roy G. Ponce and Career Centre Academie and Technological Institute, Inc. (CCATI)President Ms. Mary Jane P. Trinidad signed a Memorandum of Agreement covering technical vocationaltraining and national certification activities for the Bachelor...</p>
+            <div class="links" style="border-top: var(--border);margin-top: .5rem;padding-top: 1.5rem;display: flex;align-items: center;">
+                <a href="#" class="user" style="margin-right: auto;font-size: 1.5rem;color:var(--light-color);">
+                    <i class="far fa-user"></i>
+                    <span>By: Gerald M. Pagulong</span>
+                </a>
+                <a href="#" class="icon btn" style="padding-right: 1rem;font-size: 1.5rem;color:var(--light-color);">
+                    <span style="color: white;">View More </span>
+                    <i class="fas fa-long-arrow-alt-right" style="color: white; padding-right: .2rem;"></i>
+                </a>
+            </div>
+        </div>
+
+          <div class="post" style="width:100%;padding:2rem;background:#fff;border:var(--border);border-radius: .5rem;margin-bottom: 1.5rem;">
+            <img src="images/blog-1.jpg" alt="" class="image" style="height: 40rem;width:100%;border-radius: .5rem;object-fit: cover;">
+            <div class="date" style="padding-top: 2rem;font-size: 1.5rem;color:var(--light-color);">
+                <i class="far fa-clock"></i>
+                <span>JULY 28, 2022</span>
+            </div>
+            <h3 class="title" style="padding-top: 1.5rem;font-size: 2.5rem;color:var(--black);">DOrSU responds SDG challenges, marks 2nd IBC, URDE-CAIR</h3>
+            <p class="text" style=" color:var(--light-color);font-size: 1.6rem;line-height: 1.7;padding:1rem 0;">To address the challenges posed by the Sustainable Development Goals (SDGs), the Davao Oriental State University held its second International Biodiversity Conference (IBC) and University Research Development and Extension Colloquium and Annual In-house Review...</p>
+            <div class="links" style="border-top: var(--border);margin-top: .5rem;padding-top: 1.5rem;display: flex;align-items: center;">
+                <a href="#" class="user" style="margin-right: auto;font-size: 1.5rem;color:var(--light-color);">
+                    <i class="far fa-user"></i>
+                    <span>By: Gerald M. Pagulong</span>
+                </a>
+                <a href="#" class="icon btn" style="padding-right: 1rem;font-size: 1.5rem;color:var(--light-color);">
+                    <span style="color: white;">View More </span>
+                    <i class="fas fa-long-arrow-alt-right" style="color: white; padding-right: .2rem;"></i>
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="sidebar">
+
+        <div class="box" style=" border:var(--border);border-radius: .5rem;overflow:hidden;background:#fff;margin-bottom: 1.5rem;">
+            <h3 class="title" style=" padding:1.5rem;font-size: 2rem;color:#fff;background:#003399;text-transform: capitalize;">DOrSU Institutes</h3>
+            <div class="about" style="text-align: center;padding:1rem 1.5rem;">
+               <img src="images/ials.png" width="80%">
+               <br>
+               <img src="images/ibpa.png" width="80%">
+               <br>
+               <img src="images/ice.png" width="80%">
+               <br>
+               <img src="images/iett.png" width="80%">
+               <br>
+               <img src="images/inahs.png" width="80%">
+            </div>
+        </div>
+
+         <div class="box" style=" border:var(--border);border-radius: .5rem;overflow:hidden;background:#fff;margin-bottom: 1.5rem;">
+            <h3 class="title" style=" padding:1.5rem;font-size: 2rem;color:#fff;background:#003399;text-transform: capitalize;">Campuses</h3>
+            <div class="about" style="text-align: left;padding:1rem 1.5rem;">
+               <ul style="padding: 1em; font-size: 1.5em;">
+                   <li>Banay Banay Campus</li>
+                   <li>Cateel Campus</li>
+                   <li>San Isidro Campus</li>
+               </ul>
+            </div>
+        </div>
+
+        <div class="box" style=" border:var(--border);border-radius: .5rem;overflow:hidden;background:#fff;margin-bottom: 1.5rem;">
+            <h3 class="title" style=" padding:1.5rem;font-size: 2rem;color:#fff;background:#003399;text-transform: capitalize;">Archives</h3>
+            <div class="about" style="text-align: left;padding:1rem 1.5rem;">
+               <ul style="padding: 1em; font-size: 1.5em;">
+                    <li>September 2022</li>
+                    <li>August 2022</li>
+                    <li>July 2022</li>
+                    <li>June 2022</li>
+                    <li>May 2022</li>
+                    <li>April 2022</li>
+                    <li>February 2022</li>
+                    <li>January 2022</li>
+                    <li>November 2021</li>
+                    <li>October 2021</li>
+               </ul>
+            </div>
+        </div>
+
+
+
+    </div>
+
+</section>
+
+<!-- posts section ends -->
+
+<!-- contact section starts  -->
+
+<section class="footerdetails" id="footerdetails" style="background:url(images/blog-1.jpg) no-repeat;background-size: cover;background-position: center;background-attachment: fixed;">
+
+    <div style="background:#fff;box-shadow: var(--box-shadow);border-radius: .5rem;margin:2rem auto;max-width: 70rem;padding:2rem;text-align: center;opacity: .9;">    
+        <img src="images/logo.png">
+        <br>
+
+    </div>
+
+</section>
+
+<!-- contact section ends -->
+
+<!-- footer section starts  -->
+
+<section class="footer" style=" display: flex;align-items: center;justify-content: space-between;">
+
+    <div class="follow" style="padding: 1rem 0;">
+        <a href="#" class="fab fa-facebook-f" style="height:4.5rem;line-height:4.5rem;width:4.5rem;border-radius: 50%;font-size: 1.7rem;background:var(--black);color:#fff;margin:0 .1rem;text-align: center;"></a>
+        <a href="#" class="fab fa-twitter" style="height:4.5rem;line-height:4.5rem;width:4.5rem;border-radius: 50%;font-size: 1.7rem;background:var(--black);color:#fff;margin:0 .1rem;text-align: center;"></a>
+        <a href="#" class="fab fa-instagram" style="height:4.5rem;line-height:4.5rem;width:4.5rem;border-radius: 50%;font-size: 1.7rem;background:var(--black);color:#fff;margin:0 .1rem;text-align: center;"></a>
+    </div>
+
+    <div class="credit" style="text-transform: capitalize;font-size: 2rem;color:var(--black);padding: 1rem 0;">Davao Oriental State University © 2022. </span> |  All Rights Reserved.</div>
+
+</section>
+
+<!-- footer section ends -->
+
+
+
+<!-- custom js file link  -->
+<script src="js/script.js"></script>
+    
+</body>
 </html>
